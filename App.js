@@ -4,20 +4,19 @@ import { Image, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 
 export default function App() {
 	return (
-		<View style={ styles.container }>
-			<Image source={{uri: "https://i.imgur.com/TkIrScD.png"}} style={styles.logo} />
+		<View style={styles.container}>
+			<Image
+				source={{ uri: 'https://i.imgur.com/TkIrScD.png' }}
+				style={styles.logo}
+			/>
 
-			<Text style={ styles.instructions }>
-				expo
-			</Text>
+			<Text style={styles.instructions}>expo</Text>
 
 			<TouchableOpacity
 				onPress={() => alert('Hello')}
-				style={{ backgroundColor: 'blue'}}
+				style={{ backgroundColor: 'blue' }}
 			>
-				<Text style={ styles.instructions }>
-					Pick a photo
-				</Text>
+				<Text style={styles.instructions}>Pick a photo</Text>
 			</TouchableOpacity>
 			<StatusBar style="auto" />
 		</View>
@@ -40,5 +39,5 @@ const styles = StyleSheet.create({
 		color: '#888',
 		fontSize: 18,
 		marginHorizontal: 15,
-	}, 
+	},
 });
