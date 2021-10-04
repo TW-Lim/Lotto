@@ -6,7 +6,7 @@ import QR from '../screens/inputScreens/QR';
 
 const Tab = createBottomTabNavigator();
 
-export default function botNav() {
+export default function BotNav() {
 	return (
 		<Tab.Navigator>
 			<Tab.Screen name="log" component={log} />
