@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { Image, StyleSheet, Text, View, Button } from 'react-native';
+import botNav from './navigation/bottomNav';
 
 export default function App() {
 	return (
@@ -12,13 +14,12 @@ export default function App() {
 
 			<Text style={styles.instructions}>expo</Text>
 
-			<TouchableOpacity
-				onPress={() => alert('Hello')}
-				style={{ backgroundColor: 'blue' }}
-			>
-				<Text style={styles.instructions}>Pick a photo</Text>
-			</TouchableOpacity>
+			<Button style={{ backgroundColor: 'blue' }}>Pick ma a photo</Button>
 			<StatusBar style="auto" />
+
+			<NavigationContainer>
+				<botNav />
+			</NavigationContainer>
 		</View>
 	);
 }
