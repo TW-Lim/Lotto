@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import DrawCount from '../components/DrawCount/DrawCount';
 
 export default function home() {
@@ -21,3 +21,5 @@ export default function home() {
 		</View>
 	);
 }
+
+const style = StyleSheet.create({});
