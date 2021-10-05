@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default function home() {
+export default function QR() {
 	return (
 		<View
 			style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
 		>
-			<Text>home</Text>
+			<Text>QR</Text>
 		</View>
 	);
 }
