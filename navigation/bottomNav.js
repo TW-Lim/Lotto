@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 import home from '../screens/home';
 import log from '../screens/log';
 import QR from '../screens/inputScreens/QR';
@@ -8,10 +9,28 @@ const Tab = createBottomTabNavigator();
 
 export default function BotNav() {
 	return (
-		<Tab.Navigator initialRouteName="home" backBehavior="initialRoute">
-			<Tab.Screen name="log" component={log} />
-			<Tab.Screen name="home" component={home} />
-			<Tab.Screen name="QR" component={QR} />
+		<Tab.Navigator initialRouteName="홈" backBehavior="initialRoute">
+			<Tab.Screen
+				name="로그"
+				component={log}
+				options={{
+					tabBarIcon: () => <AntDesign name="left" size={20} />,
+				}}
+			/>
+			<Tab.Screen
+				name="홈"
+				component={home}
+				options={{
+					tabBarIcon: () => <Entypo name="home" size={20} />,
+				}}
+			/>
+			<Tab.Screen
+				name="입력"
+				component={QR}
+				options={{
+					tabBarIcon: () => <AntDesign name="right" size={20} />,
+				}}
+			/>
 		</Tab.Navigator>
 	);
 }
