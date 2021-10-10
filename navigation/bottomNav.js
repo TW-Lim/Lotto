@@ -15,6 +15,7 @@ export default function BotNav() {
 				component={log}
 				options={{
 					tabBarIcon: () => <AntDesign name="left" size={20} />,
+					headerShown: false,
 				}}
 			/>
 			<Tab.Screen
@@ -22,6 +23,7 @@ export default function BotNav() {
 				component={home}
 				options={{
 					tabBarIcon: () => <Entypo name="home" size={20} />,
+					headerShown: false,
 				}}
 			/>
 			<Tab.Screen
@@ -29,6 +31,16 @@ export default function BotNav() {
 				component={QR}
 				options={{
 					tabBarIcon: () => <AntDesign name="right" size={20} />,
+					headerTitleStyle: {
+						fontWeight: 'bold',
+						fontSize: 20,
+					},
+					headerTitleAlign: 'left',
+					headerStyle: {
+						shadowRadius: 0,
+						shadowOffset: { height: 0 },
+						elevation: 0,
+					},
 				}}
 			/>
 		</Tab.Navigator>
