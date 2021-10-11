@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import QRScanner from '../../utils/camera';
-  
+
 const Tab = createMaterialTopTabNavigator();
 
 export default function QR() {
