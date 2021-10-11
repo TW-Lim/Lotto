@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-
+import QRScanner from '../../utils/camera';
+  
 const Tab = createMaterialTopTabNavigator();
 
 export default function QR() {
@@ -56,7 +57,7 @@ function QRCamera() {
 	return (
 		<View style={styles.container}>
 			<View style={styles.camera}>
-				<Text>카메라 들어갈 장소 입니다.</Text>
+				<QRScanner />
 			</View>
 		</View>
 	);
