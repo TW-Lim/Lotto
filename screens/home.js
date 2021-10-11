@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
 import DrawCount from '../components/DrawCount/DrawCount';
-import { ReqWinNum } from '../utils/LottoAPI';
+import ReqWinNum from '../utils/LottoAPI';
 
 export default function home() {
 	const [count, setCount] = useState(0);
-	console.log(ReqWinNum(123).bnusno);
+	ReqWinNum(123).then((response) => console.log(response));
 
 	return (
 		<View

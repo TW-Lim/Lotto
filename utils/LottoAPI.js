@@ -1,4 +1,4 @@
-export const reqWinNum = async (drawCount) => {
+const reqWinNum = async (drawCount) => {
 	const url =
 		'https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=';
 	let json;
@@ -14,10 +14,11 @@ export const reqWinNum = async (drawCount) => {
 	try {
 		const response = await fetch(`${url}${drawCount}`);
 		json = await response.json();
-		jsonObj = await JSON.
 	} catch (e) {
 		console.error(e);
 	}
 
 	return json;
 };
+
+export default reqWinNum;
