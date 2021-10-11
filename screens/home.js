@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
-import { View, Text, Button } from 'react-native';
-import DrawCount from '../components/DrawCount/DrawCount';
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import DrawCount from '../components/DrawCount';
 
 export default function home() {
-	const [count, setCount] = useState(0);
-
 	return (
-		<View
-			style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-		>
+		<View style={styles.container}>
 			<DrawCount />
-			<Text>home</Text>
-			<Text>{`Pressed ${count} times`}</Text>
-			<Button
-				title="Tab"
-				color="#f0f"
-				onPress={() => {
-					setCount(count + 1);
-				}}
-			></Button>
+			<View style={styles.log}>
+				<Text>로그</Text>
+			</View>
 		</View>
 	);
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		flexDirection: 'column', // 혹은 'row'
+		backgroundColor: 'white',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+
+	log: {
+		flex: 1.5,
+		alignItems: 'center',
+		justifyContent: 'center',
+		width: '90%',
+		backgroundColor: 'white',
+		margin: '5%',
+		marginTop: '5%',
+		borderWidth: 1,
+		borderColor: '#c3c3c3',
+		borderRadius: 5,
+	},
+});
