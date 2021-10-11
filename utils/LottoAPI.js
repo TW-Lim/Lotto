@@ -1,24 +1,17 @@
+//ReqWinNum(123).then((response) => (YOUR CODE)); <= #*#*아무 파일에서나 이 방식으로 사용 가능*#*#
+//API 호출할 때 비동기, 가져온 프로미스를 사용할 때도 비동기로
 const reqWinNum = async (drawCount) => {
 	const url =
 		'https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=';
-	let json;
-	/* 
-	1. home에서 console.log, fetch를 변수에 할당 후 then(data)에서 리턴 - Promise._W에 데이터 수신 성공
-	1-1. home에서 console.log, then(data)에서 return 없이 data 호출 - Promise._W가 undefined
-	1-2. home에서 console.log 삭제, then(data)에서 consol.log(data) - 로또 Object 바로 출력
-	2. async await를 사용해서 consol.log - [Function Callee] 출력
-	3. 그 외 기억 안나는 실패사례들
+	let lottoData;
 
-	여기서 log하지 않고 외부 파일에서 로또정보객체만 사용하려면?
-	*/
 	try {
-		const response = await fetch(`${url}${drawCount}`);
-		json = await response.json();
+		const data = await fetch(`${url}${drawCount}`);
+		lottoData = await data.json();
 	} catch (e) {
 		console.error(e);
 	}
 
-	return json;
+	return lottoData;
 };
-
 export default reqWinNum;
