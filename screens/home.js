@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import DrawCount from '../components/DrawCount/DrawCount';
+import ReqWinNum from '../utils/LottoAPI';
 
 export default function home() {
 	const [count, setCount] = useState(0);
+
 	return (
 		<View
 			style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
@@ -21,5 +23,3 @@ export default function home() {
 		</View>
 	);
 }
-
-const style = StyleSheet.create({});

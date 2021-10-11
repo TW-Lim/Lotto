@@ -17,4 +17,7 @@ module.exports = {
 	},
 	plugins: ['react'],
 	rules: {},
+	globals: {
+		fetch: false,
+	},
 };
