@@ -9,7 +9,12 @@ export default function DrawCount() {
 				<Text>2021-09-18</Text>
 			</View>
 			<View style={styles.item2}>
-				<Text>메인</Text>
+				<View style={styles.number}>
+					<Text>번호</Text>
+				</View>
+				<View style={styles.price}>
+					<Text>상금</Text>
+				</View>
 			</View>
 		</View>
 	);
@@ -22,7 +27,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
-
 		width: '100%',
 	},
 
@@ -30,9 +34,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: 'white',
 		justifyContent: 'center',
-		marginLeft: 20,
-		marginBottom: 20,
-		marginTop: 20,
+		marginLeft: '5%',
+		marginBottom: '7%',
+		marginTop: '18%',
 		width: '90%',
 	},
 
@@ -46,8 +50,41 @@ const styles = StyleSheet.create({
 		borderRadius: 5,
 	},
 
+	number: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+
+		flexDirection: 'row',
+		width: '90%',
+		marginTop: '3%',
+		backgroundColor: 'gray',
+	},
+
+	price: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: '90%',
+		marginBottom: '3%',
+		backgroundColor: 'green',
+	},
+
 	mainText: {
 		fontSize: 35,
 		fontWeight: 'bold',
+	},
+
+	circle: {
+		borderRadius: 50,
+		width: 40,
+		height: 40,
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: 'red',
+	},
+
+	Cnumber: {
+		fontSize: 18,
 	},
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 const Tab = createMaterialTopTabNavigator();
@@ -33,8 +33,21 @@ export default function QR() {
 function Keyboard() {
 	return (
 		<View style={styles.container}>
-			<View style={styles.item1}></View>
-			<View style={styles.item2}></View>
+			<View
+				style={{
+					flex: 1,
+					width: '90%',
+					margin: '4%',
+					alignItems: 'center',
+					justifyContent: 'center',
+					flexDirection: 'column',
+				}}
+			>
+				<View style={styles.radio}>
+					<Text>자동 수동 들어갈 자리 입니다.</Text>
+				</View>
+				<View style={styles.item2}></View>
+			</View>
 		</View>
 	);
 }
@@ -42,7 +55,9 @@ function Keyboard() {
 function QRCamera() {
 	return (
 		<View style={styles.container}>
-			<View style={styles.item1}></View>
+			<View style={styles.camera}>
+				<Text>카메라 들어갈 장소 입니다.</Text>
+			</View>
 		</View>
 	);
 }
@@ -50,43 +65,42 @@ function QRCamera() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: 'column', // 혹은 'row'
+		flexDirection: 'column',
 		backgroundColor: 'white',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
 
-	item1: {
+	radio: {
+		flex: 0.6,
+		justifyContent: 'center',
+		margin: '2%',
+		width: '100%',
+		backgroundColor: 'gray',
+	},
+
+	camera: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: 'green',
-		margin: 10,
-		width: '90%',
+		width: '85%',
+		margin: '15%',
+		borderWidth: 1,
+		borderColor: '#c3c3c3',
+		borderRadius: 5,
 	},
 	item2: {
 		flex: 6,
 		justifyContent: 'center',
 		alignItems: 'center',
-		margin: 10,
-		backgroundColor: 'blue',
-		width: '90%',
+		margin: '2%',
+		width: '100%',
+		borderWidth: 1,
+		borderColor: '#c3c3c3',
+		borderRadius: 5,
 	},
 
 	Button: {
 		color: 'gray',
 	},
 });
-
-/* <View style={styles.container}>
-			<View style={styles.header}>
-				<Text>QR</Text>
-			</View>
-			<View style={styles.item1}>
-				<Text>QR</Text>
-			</View>
-			<View style={styles.item2}>
-				<Text>QR</Text>
-				<Button style={styles.Button} title="확인"></Button>
-			</View>
-		</View> */

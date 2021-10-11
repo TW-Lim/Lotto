@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import DrawCount from '../screens/inputScreens/DrawCount';
+import DrawCount from '../components/DrawCount';
 
 export default function home() {
 	return (
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 		alignItems: 'center',
 		justifyContent: 'center',
-		marginTop: 30,
 	},
 
 	log: {
@@ -29,23 +28,10 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		width: '90%',
 		backgroundColor: 'white',
-		margin: 10,
-		marginTop: 10,
+		margin: '5%',
+		marginTop: '5%',
 		borderWidth: 1,
 		borderColor: '#c3c3c3',
 		borderRadius: 5,
-	},
-
-	circle: {
-		borderRadius: 50,
-		width: 40,
-		height: 40,
-		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: 'red',
-	},
-
-	number: {
-		fontSize: 18,
 	},
 });
