@@ -1,19 +1,84 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import reqWinNum from '../utils/LottoAPI';
+
+reqWinNum(984).then(
+	(response) => (
+		(drwNoDate = response.drwNoDate),
+		((firstAccumamnt = response.firstAccumamnt
+			.toString()
+			.replace(/\B(?=(\d{3})+(?!\d))/g, ',')),
+		(drwNo = response.drwNo),
+		(drwtNo1 = response.drwtNo1),
+		(drwtNo2 = response.drwtNo2),
+		(drwtNo3 = response.drwtNo3),
+		(drwtNo4 = response.drwtNo4),
+		(drwtNo5 = response.drwtNo5),
+		(drwtNo6 = response.drwtNo6),
+		(bnusNo = response.bnusNo))
+	),
+);
+let drwNo,
+	drwNoDate,
+	firstAccumamnt,
+	drwtNo1,
+	drwtNo2,
+	drwtNo3,
+	drwtNo4,
+	drwtNo5,
+	drwtNo6,
+	bnusNo;
 
 export default function DrawCount() {
 	return (
 		<View style={styles.main}>
 			<View style={styles.item1}>
-				<Text style={styles.mainText}>981회</Text>
-				<Text>2021-09-18</Text>
+				<Text style={styles.mainText}>{drwNo}회</Text>
+				<Text>{drwNoDate}</Text>
 			</View>
 			<View style={styles.item2}>
 				<View style={styles.number}>
-					<Text>번호</Text>
+					<View style={styles.circle}>
+						<Text>{drwtNo1}</Text>
+					</View>
+					<View style={{ padding: '1%' }}></View>
+
+					<View style={styles.circle}>
+						<Text>{drwtNo2}</Text>
+					</View>
+					<View style={{ padding: '1%' }}></View>
+
+					<View style={styles.circle}>
+						<Text>{drwtNo3}</Text>
+					</View>
+					<View style={{ padding: '1%' }}></View>
+
+					<View style={styles.circle}>
+						<Text>{drwtNo4}</Text>
+					</View>
+					<View style={{ padding: '1%' }}></View>
+
+					<View style={styles.circle}>
+						<Text>{drwtNo5}</Text>
+					</View>
+					<View style={{ padding: '1%' }}></View>
+
+					<View style={styles.circle}>
+						<Text>{drwtNo6}</Text>
+					</View>
+					<View style={{ padding: '1%' }}></View>
+
+					<Text>+</Text>
+					<View style={{ padding: '1%' }}></View>
+
+					<View style={styles.circle}>
+						<Text>{bnusNo}</Text>
+					</View>
 				</View>
 				<View style={styles.price}>
-					<Text>상금</Text>
+					<Text style={styles.Text}>1등 상금 </Text>
+					<View style={{ padding: '3%' }}></View>
+					<Text style={styles.Text}>{firstAccumamnt}원</Text>
 				</View>
 			</View>
 		</View>
@@ -46,7 +111,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		width: '90%',
 		borderWidth: 1,
-		borderColor: '#c3c3c3',
+		borderColor: 'black',
 		borderRadius: 5,
 	},
 
@@ -54,20 +119,20 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-
 		flexDirection: 'row',
 		width: '90%',
-		marginTop: '3%',
-		backgroundColor: 'gray',
+		padding: '2%',
+		borderBottomWidth: 1,
+		borderColor: '#c3c3c3',
 	},
 
 	price: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+		flexDirection: 'row',
 		width: '90%',
 		marginBottom: '3%',
-		backgroundColor: 'green',
 	},
 
 	mainText: {
@@ -77,14 +142,19 @@ const styles = StyleSheet.create({
 
 	circle: {
 		borderRadius: 50,
-		width: 40,
-		height: 40,
+		width: 33,
+		height: 33,
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: 'red',
+		backgroundColor: '#ede0f0',
 	},
 
 	Cnumber: {
 		fontSize: 18,
+	},
+
+	Text: {
+		fontSize: 20,
+		fontWeight: 'bold',
 	},
 });
