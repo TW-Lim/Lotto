@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import home from '../screens/home';
 import log from '../screens/log';
-import QR from '../screens/inputScreens/QR';
+import QR from '../screens/InputNumber';
 
 const Tab = createBottomTabNavigator();
 
