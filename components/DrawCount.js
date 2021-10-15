@@ -2,6 +2,17 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import reqWinNum from '../utils/LottoAPI';
 
+let drwNo,
+	drwNoDate,
+	firstAccumamnt,
+	drwtNo1,
+	drwtNo2,
+	drwtNo3,
+	drwtNo4,
+	drwtNo5,
+	drwtNo6,
+	bnusNo;
+
 reqWinNum(984).then(
 	(response) => (
 		(drwNoDate = response.drwNoDate),
@@ -18,16 +29,6 @@ reqWinNum(984).then(
 		(bnusNo = response.bnusNo))
 	),
 );
-let drwNo,
-	drwNoDate,
-	firstAccumamnt,
-	drwtNo1,
-	drwtNo2,
-	drwtNo3,
-	drwtNo4,
-	drwtNo5,
-	drwtNo6,
-	bnusNo;
 
 export default function DrawCount() {
 	return (
@@ -41,35 +42,28 @@ export default function DrawCount() {
 					<View style={styles.circle}>
 						<Text>{drwtNo1}</Text>
 					</View>
-					<View style={{ padding: '1%' }}></View>
 
 					<View style={styles.circle}>
 						<Text>{drwtNo2}</Text>
 					</View>
-					<View style={{ padding: '1%' }}></View>
 
 					<View style={styles.circle}>
 						<Text>{drwtNo3}</Text>
 					</View>
-					<View style={{ padding: '1%' }}></View>
 
 					<View style={styles.circle}>
 						<Text>{drwtNo4}</Text>
 					</View>
-					<View style={{ padding: '1%' }}></View>
 
 					<View style={styles.circle}>
 						<Text>{drwtNo5}</Text>
 					</View>
-					<View style={{ padding: '1%' }}></View>
 
 					<View style={styles.circle}>
 						<Text>{drwtNo6}</Text>
 					</View>
-					<View style={{ padding: '1%' }}></View>
 
 					<Text>+</Text>
-					<View style={{ padding: '1%' }}></View>
 
 					<View style={styles.circle}>
 						<Text>{bnusNo}</Text>
@@ -147,6 +141,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: '#ede0f0',
+		margin: '1%',
 	},
 
 	Cnumber: {
