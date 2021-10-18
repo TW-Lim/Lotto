@@ -3,7 +3,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { createStackNavigator } from '@react-navigation/stack';
 import keyboard from './inputScreens/keyboard';
 import QRcamera from './inputScreens/QRcamera';
-import Check from './inputScreens/NumberCheck';
 
 const Tab = createMaterialTopTabNavigator();
 const keyboardStack = createStackNavigator();
