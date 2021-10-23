@@ -13,22 +13,21 @@ let drwNo,
 	drwtNo6,
 	bnusNo;
 
-reqWinNum(984).then(
-	(response) => (
-		(drwNoDate = response.drwNoDate),
-		((firstAccumamnt = response.firstAccumamnt
-			.toString()
-			.replace(/\B(?=(\d{3})+(?!\d))/g, ',')),
-		(drwNo = response.drwNo),
-		(drwtNo1 = response.drwtNo1),
-		(drwtNo2 = response.drwtNo2),
-		(drwtNo3 = response.drwtNo3),
-		(drwtNo4 = response.drwtNo4),
-		(drwtNo5 = response.drwtNo5),
-		(drwtNo6 = response.drwtNo6),
-		(bnusNo = response.bnusNo))
-	),
-);
+// then으로 실행했는데도 변수 초기화보다 컴포넌트 렌더링이 머저 실행됨
+reqWinNum(984).then((response) => {
+	drwNoDate = response.drwNoDate;
+	firstAccumamnt = response.firstAccumamnt
+		.toString()
+		.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	drwNo = response.drwNo;
+	drwtNo1 = response.drwtNo1;
+	drwtNo2 = response.drwtNo2;
+	drwtNo3 = response.drwtNo3;
+	drwtNo4 = response.drwtNo4;
+	drwtNo5 = response.drwtNo5;
+	drwtNo6 = response.drwtNo6;
+	bnusNo = response.bnusNo;
+});
 
 export default function DrawCount() {
 	return (
