@@ -1,17 +1,9 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import reqWinNum from '../utils/LottoAPI';
+import Number from './Number';
 
-let drwNo,
-	drwNoDate,
-	firstAccumamnt,
-	drwtNo1,
-	drwtNo2,
-	drwtNo3,
-	drwtNo4,
-	drwtNo5,
-	drwtNo6,
-	bnusNo;
+let drwNo, drwNoDate, firstAccumamnt, No1, No2, No3, No4, No5, No6, NoB;
 
 // then으로 실행했는데도 변수 초기화보다 컴포넌트 렌더링이 머저 실행됨
 reqWinNum(984).then((response) => {
@@ -20,13 +12,13 @@ reqWinNum(984).then((response) => {
 		.toString()
 		.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	drwNo = response.drwNo;
-	drwtNo1 = response.drwtNo1;
-	drwtNo2 = response.drwtNo2;
-	drwtNo3 = response.drwtNo3;
-	drwtNo4 = response.drwtNo4;
-	drwtNo5 = response.drwtNo5;
-	drwtNo6 = response.drwtNo6;
-	bnusNo = response.bnusNo;
+	No1 = response.drwtNo1;
+	No2 = response.drwtNo2;
+	No3 = response.drwtNo3;
+	No4 = response.drwtNo4;
+	No5 = response.drwtNo5;
+	No6 = response.drwtNo6;
+	NoB = response.bnusNo;
 });
 
 export default function DrawCount() {
@@ -36,38 +28,19 @@ export default function DrawCount() {
 				<Text style={styles.mainText}>{drwNo}회</Text>
 				<Text>{drwNoDate}</Text>
 			</View>
+
 			<View style={styles.item2}>
 				<View style={styles.number}>
-					<View style={styles.circle}>
-						<Text>{drwtNo1}</Text>
-					</View>
-
-					<View style={styles.circle}>
-						<Text>{drwtNo2}</Text>
-					</View>
-
-					<View style={styles.circle}>
-						<Text>{drwtNo3}</Text>
-					</View>
-
-					<View style={styles.circle}>
-						<Text>{drwtNo4}</Text>
-					</View>
-
-					<View style={styles.circle}>
-						<Text>{drwtNo5}</Text>
-					</View>
-
-					<View style={styles.circle}>
-						<Text>{drwtNo6}</Text>
-					</View>
-
-					<Text>+</Text>
-
-					<View style={styles.circle}>
-						<Text>{bnusNo}</Text>
-					</View>
+					<Number>{No1}</Number>
+					<Number>{No2}</Number>
+					<Number>{No3}</Number>
+					<Number>{No4}</Number>
+					<Number>{No5}</Number>
+					<Number>{No6}</Number>
+					<Text> + </Text>
+					<Number>{NoB}</Number>
 				</View>
+
 				<View style={styles.price}>
 					<Text style={styles.Text}>1등 상금 </Text>
 					<View style={{ padding: '3%' }}></View>
@@ -131,16 +104,6 @@ const styles = StyleSheet.create({
 	mainText: {
 		fontSize: 35,
 		fontWeight: 'bold',
-	},
-
-	circle: {
-		borderRadius: 50,
-		width: 33,
-		height: 33,
-		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: '#ede0f0',
-		margin: '1%',
 	},
 
 	Cnumber: {
