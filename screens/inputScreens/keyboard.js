@@ -14,6 +14,7 @@ const Keyboard = ({ navigation }) => {
 				<View style={styles.radio}>
 					<Text>자동 수동 들어갈 자리 입니다.</Text>
 				</View>
+
 				<View style={styles.item2}>
 					<Button onPress={goToCheck} title="체크"></Button>
 				</View>

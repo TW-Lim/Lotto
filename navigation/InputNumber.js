@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import QRnavigator from './QR';
-import Check from './inputScreens/NumberCheck';
-import comp from './NumberComp';
+import QRnavigator from '../screens/QR';
+import Check from '../screens/inputScreens/stackScreen/NumberCheck';
+import Comp from '../screens/inputScreens/stackScreen/NumberComp';
 
 const QRNavigator = createStackNavigator();
 
@@ -21,7 +21,7 @@ export default function InputNumber() {
 			/>
 			<QRNavigator.Screen
 				name="Comp"
-				component={comp}
+				component={Comp}
 				options={{ headerShown: false }}
 			/>
 		</QRNavigator.Navigator>
