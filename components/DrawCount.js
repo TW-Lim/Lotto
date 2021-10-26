@@ -1,34 +1,74 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import reqWinNum from '../utils/LottoAPI';
+import { reqWinNum } from '../utils/LottoAPI';
 import Number from './Number';
+import PropTypes from 'prop-types';
+/*  
+이 컴포넌트는 return의 내용을 렌더링 한 후 reqWinNum이 실행되었다(추측)
+컴포넌트 함수 내의 코드의 실행, 렌더링 순서는?
 
-let drwNo, drwNoDate, firstAccumamnt, No1, No2, No3, No4, No5, No6, NoB;
+Number에 손대지 않았는데 Number의 borderRadius가 적용되지 않는 문제 발생
+ */
+export default function DrawCount(props) {
+	// useState로 lottoWin 객체 STate 생성
+	const [lottoWin, setLottoWin] = useState({
+		drwNo: 0,
+		drwNoDate: '로드 중',
+		firstAccumamnt: 0,
+		No1: 0,
+		No2: 0,
+		No3: 0,
+		No4: 0,
+		No5: 0,
+		No6: 0,
+		NoB: 0,
+	});
 
-// then으로 실행했는데도 변수 초기화보다 컴포넌트 렌더링이 머저 실행됨
-reqWinNum(984).then((response) => {
-	drwNoDate = response.drwNoDate;
-	firstAccumamnt = response.firstAccumamnt
-		.toString()
-		.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	drwNo = response.drwNo;
-	No1 = response.drwtNo1;
-	No2 = response.drwtNo2;
-	No3 = response.drwtNo3;
-	No4 = response.drwtNo4;
-	No5 = response.drwtNo5;
-	No6 = response.drwtNo6;
-	NoB = response.bnusNo;
-});
+	// lottoWin State를 상수로 만들어서(spread operator) return에서 호출할 수 있게
+	const {
+		drwNo,
+		drwNoDate,
+		firstAccumamnt,
+		No1,
+		No2,
+		No3,
+		No4,
+		No5,
+		No6,
+		NoB,
+	} = lottoWin;
 
-export default function DrawCount() {
+	// props.count로 회차 번호 받아 setState로 지정
+	const set = async () => {
+		const response = await reqWinNum(props.count);
+
+		setLottoWin({
+			...lottoWin,
+			['drwNo']: response.drwNo,
+			['drwNoDate']: response.drwNoDate,
+			['firstAccumamnt']: response.firstAccumamnt
+				.toString()
+				.replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+			['No1']: response.drwtNo1,
+			['No2']: response.drwtNo2,
+			['No3']: response.drwtNo3,
+			['No4']: response.drwtNo4,
+			['No5']: response.drwtNo5,
+			['No6']: response.drwtNo6,
+			['NoB']: response.bnusNo,
+		});
+	};
+
+	useEffect(() => {
+		set();
+	}, []);
+
 	return (
 		<View style={styles.main}>
 			<View style={styles.item1}>
 				<Text style={styles.mainText}>{drwNo}회</Text>
 				<Text>{drwNoDate}</Text>
 			</View>
-
 			<View style={styles.item2}>
 				<View style={styles.number}>
 					<Number>{No1}</Number>
@@ -50,6 +90,10 @@ export default function DrawCount() {
 		</View>
 	);
 }
+
+DrawCount.propTypes = {
+	count: PropTypes.number.isRequired,
+};
 
 const styles = StyleSheet.create({
 	main: {

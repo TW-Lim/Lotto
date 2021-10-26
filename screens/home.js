@@ -1,11 +1,14 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { newLottoFinal } from '../utils/LottoAPI';
 import DrawCount from '../components/DrawCount';
+
+const count = newLottoFinal();
 
 export default function home() {
 	return (
 		<View style={styles.container}>
-			<DrawCount />
+			<DrawCount count={count} />
 			<View style={styles.log}>
 				<Text>로그</Text>
 			</View>

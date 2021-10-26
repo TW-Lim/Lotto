@@ -19,13 +19,9 @@ const reqWinNum = async (drawCount) => {
 const newLottoFinal = () => {
 	const today = moment();
 	const fstLottoFinal = moment('2002/12/07', 'YYYY/MM/DD');
-
-	const newLottoFinal = today.diff(fstLottoFinal, 'days') / 7 + 1;
+	const newLottoFinal = parseInt(today.diff(fstLottoFinal, 'days') / 7 + 1);
 	//토요일 추첨 전에는 안나오게? 하여튼 거시기 그거 고치기
 	return newLottoFinal;
 };
 
-export default {
-	reqWinNum,
-	newLottoFinal,
-};
+export { reqWinNum, newLottoFinal };
