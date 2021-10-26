@@ -8,15 +8,15 @@ export default function Number(props) {
 
 	// children 크기에 따라 color변수에 알맞은 styles 객체 대입
 	if (number >= 1 && number < 11) {
-		color = styles.yellow;
+		color = styles.Number1;
 	} else if (number >= 11 && number < 21) {
-		color = styles.blue;
+		color = styles.Number11;
 	} else if (number >= 21 && number < 31) {
-		color = styles.red;
+		color = styles.Number21;
 	} else if (number >= 31 && number < 41) {
-		color = styles.black;
+		color = styles.Number31;
 	} else if (number >= 41) {
-		color = styles.green;
+		color = styles.Number41;
 	}
 
 	return (
@@ -32,22 +32,21 @@ const styles = StyleSheet.create({
 		height: 33,
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: '#ede0f0',
 		margin: '1%',
 	},
-	yellow: {
-		backgroundColor: 'yellow',
+	Number1: {
+		backgroundColor: '#ede0f0',
 	},
-	blue: {
-		backgroundColor: 'blue',
+	Number11: {
+		backgroundColor: '#fcffb0',
 	},
-	red: {
-		backgroundColor: 'red',
+	Number21: {
+		backgroundColor: '#ffafb0',
 	},
-	black: {
-		backgroundColor: 'grey',
+	Number31: {
+		backgroundColor: '#afffba',
 	},
-	green: {
-		backgroundColor: 'green',
+	Number41: {
+		backgroundColor: '#c4f4fe',
 	},
 });

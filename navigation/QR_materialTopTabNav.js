@@ -1,14 +1,14 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-//import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import Keyboard from './../screens/inputScreens/keyboard';
 import QRScanner from './../screens/inputScreens/QRcamera';
 
 const Tab = createMaterialTopTabNavigator();
-/* 
+
 const keyboardStack = createStackNavigator();
 const QRCamera = createStackNavigator();
- */
+
 export default function MatTopNav() {
 	return (
 		<Tab.Navigator
@@ -29,18 +29,18 @@ export default function MatTopNav() {
 				tabBarPressOpacity: '50%',
 			}}
 		>
-			<Tab.Screen name="직접입력" component={Keyboard} />
-			<Tab.Screen name="QR입력" component={QRScanner} />
+			<Tab.Screen name="직접입력" component={KeyboardStackScreen} />
+			<Tab.Screen name="QR입력" component={QRCameraStackScreen} />
 		</Tab.Navigator>
 	);
 }
-/* 
+
 function KeyboardStackScreen() {
 	return (
 		<keyboardStack.Navigator initialRouteName="Keyboard">
 			<keyboardStack.Screen
 				name="Keyboard"
-				component={keyboard}
+				component={Keyboard}
 				options={{ headerShown: false }}
 			/>
 		</keyboardStack.Navigator>
@@ -58,4 +58,3 @@ function QRCameraStackScreen() {
 		</QRCamera.Navigator>
 	);
 }
-*/
