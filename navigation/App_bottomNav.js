@@ -3,10 +3,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import home from '../screens/home';
 import log from '../screens/log';
-import QR from '../screens/inputScreens/QR';
+import QR from './InputNumber';
 
 const Tab = createBottomTabNavigator();
-
+// App -> home, log, QR
 export default function BotNav() {
 	return (
 		<Tab.Navigator initialRouteName="홈" backBehavior="initialRoute">

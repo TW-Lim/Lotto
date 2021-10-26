@@ -1,19 +1,50 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import reqWinNum from '../utils/LottoAPI';
+import Number from './Number';
+
+let drwNo, drwNoDate, firstAccumamnt, No1, No2, No3, No4, No5, No6, NoB;
+
+// then으로 실행했는데도 변수 초기화보다 컴포넌트 렌더링이 머저 실행됨
+reqWinNum(984).then((response) => {
+	drwNoDate = response.drwNoDate;
+	firstAccumamnt = response.firstAccumamnt
+		.toString()
+		.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	drwNo = response.drwNo;
+	No1 = response.drwtNo1;
+	No2 = response.drwtNo2;
+	No3 = response.drwtNo3;
+	No4 = response.drwtNo4;
+	No5 = response.drwtNo5;
+	No6 = response.drwtNo6;
+	NoB = response.bnusNo;
+});
 
 export default function DrawCount() {
 	return (
 		<View style={styles.main}>
 			<View style={styles.item1}>
-				<Text style={styles.mainText}>981회</Text>
-				<Text>2021-09-18</Text>
+				<Text style={styles.mainText}>{drwNo}회</Text>
+				<Text>{drwNoDate}</Text>
 			</View>
+
 			<View style={styles.item2}>
 				<View style={styles.number}>
-					<Text>번호</Text>
+					<Number>{No1}</Number>
+					<Number>{No2}</Number>
+					<Number>{No3}</Number>
+					<Number>{No4}</Number>
+					<Number>{No5}</Number>
+					<Number>{No6}</Number>
+					<Text> + </Text>
+					<Number>{NoB}</Number>
 				</View>
+
 				<View style={styles.price}>
-					<Text>상금</Text>
+					<Text style={styles.Text}>1등 상금 </Text>
+					<View style={{ padding: '3%' }}></View>
+					<Text style={styles.Text}>{firstAccumamnt}원</Text>
 				</View>
 			</View>
 		</View>
@@ -46,7 +77,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		width: '90%',
 		borderWidth: 1,
-		borderColor: '#c3c3c3',
+		borderColor: 'black',
 		borderRadius: 5,
 	},
 
@@ -54,20 +85,20 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-
 		flexDirection: 'row',
 		width: '90%',
-		marginTop: '3%',
-		backgroundColor: 'gray',
+		padding: '2%',
+		borderBottomWidth: 1,
+		borderColor: '#c3c3c3',
 	},
 
 	price: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+		flexDirection: 'row',
 		width: '90%',
 		marginBottom: '3%',
-		backgroundColor: 'green',
 	},
 
 	mainText: {
@@ -75,16 +106,12 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 	},
 
-	circle: {
-		borderRadius: 50,
-		width: 40,
-		height: 40,
-		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: 'red',
-	},
-
 	Cnumber: {
 		fontSize: 18,
+	},
+
+	Text: {
+		fontSize: 20,
+		fontWeight: 'bold',
 	},
 });
