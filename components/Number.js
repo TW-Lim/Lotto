@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-
+import PropTypes from 'prop-types';
 //변수를 children으로 받아 표시
 export default function Number(props) {
 	const number = props.children;
@@ -25,6 +25,12 @@ export default function Number(props) {
 		</View>
 	);
 }
+
+// props.children의 타입과 필요여부 설정(없으면 lint 잡힘)
+Number.propTypes = {
+	children: PropTypes.number.isRequired,
+};
+
 const styles = StyleSheet.create({
 	circle: {
 		borderRadius: 50,
