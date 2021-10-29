@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 이 컴포넌트는 return의 내용을 렌더링 한 후 reqWinNum이 실행되었다(추측)
 컴포넌트 함수 내의 코드의 실행, 렌더링 순서는?
 
-Number에 손대지 않았는데 Number의 borderRadius가 적용되지 않는 문제 발생
+Number에 손대지 않았는데 Number의 borderRadius가 적용되지 않는 문제 발생 -> Number style에 color가 생기면서 충돌이 발생한것이 원인. 해결완료.
  */
 export default function DrawCount(props) {
 	// useState로 lottoWin 객체 STate 생성

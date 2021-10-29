@@ -33,7 +33,6 @@ Number.propTypes = {
 
 const styles = StyleSheet.create({
 	circle: {
-		borderRadius: 50,
 		width: 33,
 		height: 33,
 		alignItems: 'center',
@@ -42,17 +41,22 @@ const styles = StyleSheet.create({
 	},
 	Number1: {
 		backgroundColor: '#ede0f0',
+		borderRadius: 50,
 	},
 	Number11: {
 		backgroundColor: '#fcffb0',
+		borderRadius: 50,
 	},
 	Number21: {
 		backgroundColor: '#ffafb0',
+		borderRadius: 50,
 	},
 	Number31: {
 		backgroundColor: '#afffba',
+		borderRadius: 50,
 	},
 	Number41: {
 		backgroundColor: '#c4f4fe',
+		borderRadius: 50,
 	},
 });
