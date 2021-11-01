@@ -14,7 +14,7 @@ export default function DrawCount(props) {
 	const [lottoWin, setLottoWin] = useState({
 		drwNo: 0,
 		drwNoDate: '로드 중',
-		firstAccumamnt: 0,
+		firstWinamnt: 0,
 		No1: 0,
 		No2: 0,
 		No3: 0,
@@ -28,7 +28,7 @@ export default function DrawCount(props) {
 	const {
 		drwNo,
 		drwNoDate,
-		firstAccumamnt,
+		firstWinamnt,
 		No1,
 		No2,
 		No3,
@@ -38,6 +38,8 @@ export default function DrawCount(props) {
 		NoB,
 	} = lottoWin;
 
+	const count = props.count;
+
 	// props.count로 회차 번호 받아 setState로 지정
 	const set = async () => {
 		const response = await reqWinNum(props.count);
@@ -46,7 +48,8 @@ export default function DrawCount(props) {
 			...lottoWin,
 			['drwNo']: response.drwNo,
 			['drwNoDate']: response.drwNoDate,
-			['firstAccumamnt']: response.firstAccumamnt
+			['firstWinamnt']: response.firstWinamnt
+				// 입력창에 0이나 공백이 들어왔을 때 toString 불가능 에러
 				.toString()
 				.replace(/\B(?=(\d{3})+(?!\d))/g, ','),
 			['No1']: response.drwtNo1,
@@ -62,6 +65,13 @@ export default function DrawCount(props) {
 	useEffect(() => {
 		set();
 	}, []);
+
+	//컴포넌트의 state가 변해야 리-렌더링 됨
+	//근데 count는 state가 아닌데?
+	//왜 이게 없으면 리렌더링 되지 않는지 다음에 다시 알아보기
+	useEffect(() => {
+		set();
+	}, [count]);
 
 	return (
 		<View style={styles.main}>
@@ -84,7 +94,11 @@ export default function DrawCount(props) {
 				<View style={styles.price}>
 					<Text style={styles.Text}>1등 상금 </Text>
 					<View style={{ padding: '3%' }}></View>
-					<Text style={styles.Text}>{firstAccumamnt}원</Text>
+					<Text style={styles.Text}>
+						{firstWinamnt == 0
+							? '-1등 당첨자 없음-'
+							: firstWinamnt + '원'}
+					</Text>
 				</View>
 			</View>
 		</View>
