@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, Button, TextInput } from 'react-native';
 
-// eslint-disable-next-line react/prop-types
 //모양 정돈,
 //Button onPress로 setData한 뒤 data route
 const Keyboard = ({ navigation }) => {
@@ -18,7 +18,6 @@ const Keyboard = ({ navigation }) => {
 	const { drwNo, No1, No2, No3, No4, No5, No6 } = data;
 
 	const goToCheck = () => {
-		// eslint-disable-next-line react/prop-types
 		navigation.push('Check', {
 			data: {
 				drwNo: drwNo,
