@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Drawcount from '../components/DrawCount';
+import Drawcount from '../../../components/DrawCount';
 
 //끝낼수있을까...
 
