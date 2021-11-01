@@ -42,7 +42,7 @@ export default function DrawCount(props) {
 
 	// props.count로 회차 번호 받아 setState로 지정
 	const set = async () => {
-		const response = await reqWinNum(props.count);
+		const response = await reqWinNum(count);
 
 		setLottoWin({
 			...lottoWin,

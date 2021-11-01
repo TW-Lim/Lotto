@@ -1,11 +1,35 @@
-import React from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, Button, TextInput } from 'react-native';
 
 // eslint-disable-next-line react/prop-types
+//모양 정돈,
+//Button onPress로 setData한 뒤 data route
 const Keyboard = ({ navigation }) => {
+	const [data, setData] = useState({
+		drwNo: 0,
+		No1: 0,
+		No2: 0,
+		No3: 0,
+		No4: 0,
+		No5: 0,
+		No6: 0,
+	});
+
+	const { drwNo, No1, No2, No3, No4, No5, No6 } = data;
+
 	const goToCheck = () => {
 		// eslint-disable-next-line react/prop-types
-		navigation.navigate('Check');
+		navigation.push('Check', {
+			data: {
+				drwNo: drwNo,
+				No1: No1,
+				No2: No2,
+				No3: No3,
+				No4: No4,
+				No5: No5,
+				No6: No6,
+			},
+		});
 	};
 
 	return (
@@ -16,6 +40,22 @@ const Keyboard = ({ navigation }) => {
 				</View>
 
 				<View style={styles.item2}>
+					<TextInput
+						style={styles.input}
+						keyboardType={'number-pad'}
+						maxLength={2}
+					/>
+					<TextInput
+						style={styles.input}
+						keyboardType={'number-pad'}
+						maxLength={2}
+					/>
+					<TextInput
+						style={styles.input}
+						keyboardType={'number-pad'}
+						maxLength={2}
+					/>
+
 					<Button onPress={goToCheck} title="체크"></Button>
 				</View>
 			</View>
@@ -50,16 +90,6 @@ const styles = StyleSheet.create({
 		backgroundColor: 'gray',
 	},
 
-	camera: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		width: '85%',
-		margin: '15%',
-		borderWidth: 1,
-		borderColor: '#c3c3c3',
-		borderRadius: 5,
-	},
 	item2: {
 		flex: 6,
 		justifyContent: 'center',
@@ -71,8 +101,11 @@ const styles = StyleSheet.create({
 		borderRadius: 5,
 	},
 
-	Button: {
-		color: 'gray',
+	input: {
+		height: 40,
+		margin: 12,
+		borderWidth: 1,
+		padding: 10,
 	},
 });
 
