@@ -35,7 +35,7 @@ export default function DrawCount() {
 		<View style={styles.main}>
 			<View style={styles.item1}>
 				<Text style={styles.mainText}>{drwNo}회</Text>
-				<Text>{drwNoDate}</Text>
+				<Text style={{ fontSize: 20 }}>{drwNoDate}</Text>
 			</View>
 			<View style={styles.item2}>
 				<View style={styles.number}>
@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		marginLeft: '5%',
 		marginBottom: '7%',
-		marginTop: '18%',
 		width: '90%',
 	},
 
@@ -130,7 +129,7 @@ const styles = StyleSheet.create({
 	},
 
 	mainText: {
-		fontSize: 35,
+		fontSize: 40,
 		fontWeight: 'bold',
 	},
 
@@ -149,7 +148,7 @@ const styles = StyleSheet.create({
 	},
 
 	Text: {
-		fontSize: 20,
+		fontSize: 23,
 		fontWeight: 'bold',
 	},
 });
