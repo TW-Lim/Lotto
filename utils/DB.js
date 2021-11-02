@@ -36,14 +36,14 @@ const createLottoTBL = () => {
 				"no4"	INTEGER NOT NULL,
 				"no5"	INTEGER NOT NULL,
 				"no6"	INTEGER NOT NULL,
-				"type"	TEXT	NOT NULL,
+				"type"	TEXT	NOT NULL
 			)`,
 			[],
 			(tx, result) => {
-				console.log('create', result);
+				console.log('!TBL CREATE!', result);
 			},
 			(tx, err) => {
-				console.log('!ERROR!\n', err);
+				console.log('!SQL ERROR!\n', err);
 				return true; // 실패 - 트랜잭션 롤백 시 true 리턴?
 			},
 		);
@@ -70,10 +70,10 @@ const createLottoFinalTBL = () => {
 			)`,
 			[],
 			(tx, result) => {
-				console.log('create', result);
+				console.log('TBL CREATE', result);
 			},
 			(tx, err) => {
-				console.log('!ERROR!\n', err);
+				console.log('!SQL ERROR!\n', err);
 				return true;
 			},
 		);
@@ -87,10 +87,10 @@ const InsertLottolTBL = () => {
 			)`,
 			[],
 			(tx, result) => {
-				console.log('create', result);
+				console.log('!DATA INSERT!\n', result);
 			},
 			(tx, err) => {
-				console.log('!ERROR!\n', err);
+				console.log('!SQL ERROR!\n', err);
 				return true;
 			},
 		);
@@ -103,10 +103,10 @@ const InsertLottoFinalTBL = () => {
 			`,
 			[],
 			(tx, result) => {
-				console.log('create', result);
+				console.log('!DATA INSERT!\n', result);
 			},
 			(tx, err) => {
-				console.log('!ERROR!\n', err);
+				console.log('!SQL ERROR!\n', err);
 				return true;
 			},
 		);
@@ -119,10 +119,10 @@ const selectLottoData = () => {
 			WHERE drwNo = ${drwNo};`,
 			[],
 			(tx, result) => {
-				console.log('create', result);
+				console.log('!TBL SELECT!\n', result);
 			},
 			(tx, err) => {
-				console.log('!ERROR!\n', err);
+				console.log('!SQL ERROR!\n', err);
 				return true;
 			},
 		);
@@ -135,25 +135,40 @@ const selectLottoFinalData = () => {
 			WHERE drwNo = ${drwNo};`,
 			[],
 			(tx, result) => {
-				console.log('create', result);
+				console.log('!TBL SELECT!\n', result);
 			},
 			(tx, err) => {
-				console.log('!ERROR!\n', err);
+				console.log('!SQL ERROR!\n', err);
 				return true;
 			},
 		);
 	});
 };
-const dropTBL = () => {
+const dropLottoTBL = () => {
 	lottoDB.transaction((tx) => {
 		tx.executeSql(
 			`DROP TABLE IF EXISTS Lotto`,
 			[],
 			(tx, result) => {
-				console.log('drop', result.rows);
+				console.log('!TBL DROP!\n', result.rows);
 			},
 			(tx, err) => {
-				console.log('!ERROR!\n', err);
+				console.log('!SQL ERROR!\n', err);
+				return true;
+			},
+		);
+	});
+};
+const dropLottoFinalTBL = () => {
+	lottoDB.transaction((tx) => {
+		tx.executeSql(
+			`DROP TABLE IF EXISTS Lotto`,
+			[],
+			(tx, result) => {
+				console.log('!TBL DROP!\n', result.rows);
+			},
+			(tx, err) => {
+				console.log('!SQL ERROR!\n', err);
 				return true;
 			},
 		);
@@ -165,11 +180,13 @@ const DBobj = {
 		create: createLottoTBL,
 		insert: InsertLottolTBL,
 		select: selectLottoData,
+		drop: dropLottoTBL,
 	},
 	Lotto_Final: {
 		create: createLottoFinalTBL,
 		insert: InsertLottoFinalTBL,
 		select: selectLottoFinalData,
+		drop: dropLottoFinalTBL,
 	},
 };
 
