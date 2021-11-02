@@ -2,37 +2,80 @@ import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
 export default function LottoInput() {
-	const TextInputRepeat = [1, 2, 3, 4, 5, 6].map(() => {
-		<TextInput
-			style={styles.input}
-			keyboardType={'number-pad'}
-			returnKeyType="next"
-			numeric
-			onSubmitEditing={() => {
-				this.passwordInput.focus();
-			}}
-			maxLength={2}
-		/>;
-	});
+	//const TextInputRepeat = ['1', '2', '3', '4', '5', '6'];
 
 	return (
-		<View style={styles.container}>
-			{TextInputRepeat()}
-
-			{/* <picker> */}
+		<View style={styles.list}>
+			<TextInput
+				style={styles.input}
+				keyboardType={'number-pad'}
+				returnKeyType="next"
+				placeholder="2"
+				maxLength={2}
+			/>
+			<TextInput
+				style={styles.input}
+				keyboardType={'number-pad'}
+				returnKeyType="next"
+				placeholder="2"
+				maxLength={2}
+			/>
+			<TextInput
+				style={styles.input}
+				keyboardType={'number-pad'}
+				returnKeyType="next"
+				placeholder="2"
+				maxLength={2}
+			/>
+			<TextInput
+				style={styles.input}
+				keyboardType={'number-pad'}
+				returnKeyType="next"
+				placeholder="2"
+				maxLength={2}
+			/>
+			<TextInput
+				style={styles.input}
+				keyboardType={'number-pad'}
+				returnKeyType="next"
+				placeholder="2"
+				maxLength={2}
+			/>
+			<TextInput
+				style={styles.input}
+				keyboardType={'number-pad'}
+				returnKeyType="next"
+				placeholder="2"
+				maxLength={2}
+			/>
+			<TextInput
+				style={styles.input}
+				keyboardType={'number-pad'}
+				returnKeyType="next"
+				placeholder="2"
+				maxLength={2}
+			/>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	container: {
+	list: {
+		display: 'flex',
 		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-evenly',
+		width: '100%',
+		height: '18%',
+		borderWidth: 0.5,
+		borderColor: '#c3c3c3',
+		borderRadius: 3,
 	},
-
 	input: {
-		height: 40,
-		margin: 12,
-		borderWidth: 1,
-		padding: 10,
+		marginHorizontal: '1%',
+		marginVertical: '2%',
+		padding: '1.5%',
+		fontSize: 20,
+		textAlign: 'center',
 	},
 });

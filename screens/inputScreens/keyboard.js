@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Button, TextInput } from 'react-native';
+import {
+	View,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	TextInput,
+} from 'react-native';
 import LottoInput from '../../components/LottoInput';
 
 //모양 정돈,
@@ -51,25 +57,29 @@ const Keyboard = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.main}>
-				<View style={styles.radio}>
-					<Text>자동 수동 들어갈 자리 입니다.</Text>
-				</View>
-
 				<View style={styles.item2}>
+					<Text></Text>
 					<TextInput
+						style={styles.input}
 						keyboardType={'number-pad'}
 						returnKeyType="next"
-						numeric
-						maxLength={4}
+						placeholder="2"
+						maxLength={2}
 					/>
 					<LottoInput />
 					<LottoInput />
 					<LottoInput />
 					<LottoInput />
 					<LottoInput />
-					<Button onPress={goToCheck} title="체크"></Button>
 				</View>
 			</View>
+			<TouchableOpacity
+				style={styles.check}
+				onPress={goToCheck}
+				title="체크"
+			>
+				<Text style={styles.checkText}>체크</Text>
+			</TouchableOpacity>
 		</View>
 	);
 };
@@ -82,7 +92,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-
 	main: {
 		flex: 1,
 		flexDirection: 'column',
@@ -92,7 +101,6 @@ const styles = StyleSheet.create({
 		width: '90%',
 		margin: '4%',
 	},
-
 	radio: {
 		flex: 0.6,
 		justifyContent: 'center',
@@ -102,14 +110,27 @@ const styles = StyleSheet.create({
 	},
 
 	item2: {
-		flex: 6,
-		justifyContent: 'center',
-		alignItems: 'center',
-		margin: '2%',
+		display: 'flex',
 		width: '100%',
+		height: '80%',
+		margin: '2%',
 		borderWidth: 1,
 		borderColor: '#c3c3c3',
 		borderRadius: 5,
+		flexDirection: 'column',
+	},
+
+	check: {
+		width: '100%',
+		height: '9%',
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: 'green',
+	},
+	checkText: {
+		fontSize: 20,
+		fontWeight: 'bold',
+		color: 'white',
 	},
 });
 
