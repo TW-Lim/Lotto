@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, Button, TextInput } from 'react-native';
+import LottoInput from '../../components/LottoInput';
 
 //모양 정돈,
 //Button onPress로 setData한 뒤 data route
+//useRef 사용해서 focus 전환
+//textInput 아닌 다른 컴포넌트로 로또 방식 체크
+//textInput에게 name 부여 방법
 const Keyboard = ({ navigation }) => {
 	const [data, setData] = useState({
 		drwNo: 0,
@@ -13,11 +17,23 @@ const Keyboard = ({ navigation }) => {
 		No4: 0,
 		No5: 0,
 		No6: 0,
+		type: '미',
 	});
 
-	const { drwNo, No1, No2, No3, No4, No5, No6 } = data;
+	const { drwNo, No1, No2, No3, No4, No5, No6, type } = data;
 
 	const goToCheck = () => {
+		setData({
+			...data,
+			['drwNo']: drwNo,
+			['No1']: No1,
+			['No2']: No2,
+			['No3']: No3,
+			['No4']: No4,
+			['No5']: No5,
+			['No6']: No6,
+			['type']: type,
+		});
 		navigation.push('Check', {
 			data: {
 				drwNo: drwNo,
@@ -27,6 +43,7 @@ const Keyboard = ({ navigation }) => {
 				No4: No4,
 				No5: No5,
 				No6: No6,
+				type: type,
 			},
 		});
 	};
@@ -40,21 +57,16 @@ const Keyboard = ({ navigation }) => {
 
 				<View style={styles.item2}>
 					<TextInput
-						style={styles.input}
 						keyboardType={'number-pad'}
-						maxLength={2}
+						returnKeyType="next"
+						numeric
+						maxLength={4}
 					/>
-					<TextInput
-						style={styles.input}
-						keyboardType={'number-pad'}
-						maxLength={2}
-					/>
-					<TextInput
-						style={styles.input}
-						keyboardType={'number-pad'}
-						maxLength={2}
-					/>
-
+					<LottoInput />
+					<LottoInput />
+					<LottoInput />
+					<LottoInput />
+					<LottoInput />
 					<Button onPress={goToCheck} title="체크"></Button>
 				</View>
 			</View>
@@ -98,13 +110,6 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderColor: '#c3c3c3',
 		borderRadius: 5,
-	},
-
-	input: {
-		height: 40,
-		margin: 12,
-		borderWidth: 1,
-		padding: 10,
 	},
 });
 

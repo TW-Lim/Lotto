@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import DBobj from '../utils/DB';
 import { newLottoFinal } from '../utils/LottoAPI';
 import DrawCount from '../components/DrawCount';
 
 const count = newLottoFinal();
 
 export default function home() {
+	useEffect(() => {
+		DBobj.Lotto.create();
+	}, []);
+
 	return (
 		<View style={styles.container}>
 			<DrawCount count={count} />
@@ -34,7 +39,6 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 		margin: '5%',
 		marginTop: '5%',
-		padding: '5%',
 		borderWidth: 1,
 		borderColor: '#c3c3c3',
 		borderRadius: 5,
