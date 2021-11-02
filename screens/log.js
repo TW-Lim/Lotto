@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import DrawCount from '../components/DrawCount';
 
@@ -12,7 +12,7 @@ export default function log() {
 
 	return (
 		<View style={styles.container}>
-			<ScrollView contentContainerStyle={styles.scrollView}>
+			<View style={styles.log}>
 				<TextInput
 					style={styles.input}
 					keyboardType={'number-pad'}
@@ -28,30 +28,57 @@ export default function log() {
 					placeholder={'회차'}
 				/>
 				<DrawCount count={count} />
-			</ScrollView>
+			</View>
+			<View style={styles.scroll}>
+				<ScrollView contentContainerStyle={styles.scrollView}>
+					<Text style={styles.text}>로그</Text>
+					<Text style={styles.text}>로그</Text>
+					<Text style={styles.text}>로그</Text>
+					<Text style={styles.text}>로그</Text>
+				</ScrollView>
+			</View>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	input: {
-		height: 40,
-		margin: 12,
+		width: '50%',
 		borderWidth: 1,
-		padding: 10,
+		borderRadius: 5,
+		textAlign: 'center',
+		fontSize: 20,
+		padding: '2%',
+		marginBottom: '5%',
 	},
 	container: {
 		flex: 1,
 		flexDirection: 'column', // 혹은 'row'
 		backgroundColor: 'white',
-		alignItems: 'center',
-		justifyContent: 'center',
-		paddingTop: StatusBar.currentHeight,
+		paddingTop: '11%',
 	},
 	scrollView: {
 		backgroundColor: 'white',
 	},
+	scroll: {
+		flex: 1,
+		flexDirection: 'column',
+		backgroundColor: 'white',
+		borderWidth: 1,
+		borderColor: '#c3c3c3',
+		borderRadius: 5,
+		margin: '5%',
+		padding: '6%',
+	},
+	log: {
+		flex: 1,
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+		width: '100%',
+	},
 	text: {
-		fontSize: 42,
+		fontSize: 32,
+		paddingBottom: '3%',
 	},
 });
