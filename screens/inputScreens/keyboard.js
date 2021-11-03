@@ -5,7 +5,7 @@ import {
 	StyleSheet,
 	Text,
 	TouchableOpacity,
-	TextInput,
+	ScrollView,
 } from 'react-native';
 import LottoInput from '../../components/LottoInput';
 
@@ -23,7 +23,7 @@ const Keyboard = ({ navigation }) => {
 		No4: 0,
 		No5: 0,
 		No6: 0,
-		type: '미',
+		type: 'n',
 	});
 
 	const { drwNo, No1, No2, No3, No4, No5, No6, type } = data;
@@ -56,23 +56,19 @@ const Keyboard = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<View style={styles.main}>
-				<View style={styles.item2}>
-					<Text></Text>
-					<TextInput
-						style={styles.input}
-						keyboardType={'number-pad'}
-						returnKeyType="next"
-						placeholder="2"
-						maxLength={2}
-					/>
-					<LottoInput />
-					<LottoInput />
-					<LottoInput />
-					<LottoInput />
-					<LottoInput />
-				</View>
-			</View>
+			<ScrollView style={styles.main}>
+				<Text>1번째</Text>
+				<LottoInput />
+				<Text>2번째</Text>
+				<LottoInput />
+				<Text>3번째</Text>
+				<LottoInput />
+				<Text>4번째</Text>
+				<LottoInput />
+				<Text>5번째</Text>
+				<LottoInput />
+			</ScrollView>
+
 			<TouchableOpacity
 				style={styles.check}
 				onPress={goToCheck}
@@ -93,36 +89,17 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	main: {
-		flex: 1,
+		display: '',
 		flexDirection: 'column',
 		backgroundColor: 'white',
-		alignItems: 'center',
-		justifyContent: 'center',
 		width: '90%',
-		margin: '4%',
-	},
-	radio: {
-		flex: 0.6,
-		justifyContent: 'center',
-		margin: '2%',
-		width: '100%',
-		backgroundColor: 'gray',
-	},
-
-	item2: {
-		display: 'flex',
-		width: '100%',
-		height: '80%',
-		margin: '2%',
-		borderWidth: 1,
-		borderColor: '#c3c3c3',
-		borderRadius: 5,
-		flexDirection: 'column',
+		marginTop: '4%',
+		marginHorizontal: '4%',
 	},
 
 	check: {
 		width: '100%',
-		height: '9%',
+		height: '10%',
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: 'green',
