@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Camera } from 'expo-camera';
+import { useIsFocused } from '@react-navigation/native';
 
 const QRScanner = ({ navigation }) => {
 	const [hasPermission, setHasPermission] = useState(null);
@@ -26,27 +27,30 @@ const QRScanner = ({ navigation }) => {
 		navigation.navigate('Check', lottoInputed);
 	};
 
+	const isFocused = useIsFocused();
+
 	if (hasPermission === null) {
 		return <Text>Requesting for camera permission</Text>;
-	}
-	if (hasPermission === false) {
+	} else if (hasPermission === false) {
 		return <Text>No access to camera</Text>;
-	}
+	} else if (hasPermission === true) {
+		return (
+			<View style={styles.container}>
+				{isFocused && (
+					<Camera
+						style={styles.camera}
+						onBarCodeScanned={handleBarCodeScanned}
+					/>
+				)}
 
-	return (
-		<View style={styles.container}>
-			<Camera
-				style={styles.camera}
-				onBarCodeScanned={handleBarCodeScanned}
-			/>
-
-			<View style={styles.textbutton}>
-				<Text style={styles.text}>
-					{'가운데에 QR코드를 보여주세요'}
-				</Text>
+				<View style={styles.textbutton}>
+					<Text style={styles.text}>
+						{'가운데에 QR코드를 보여주세요'}
+					</Text>
+				</View>
 			</View>
-		</View>
-	);
+		);
+	}
 };
 const styles = StyleSheet.create({
 	container: {
