@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const NumberCheck = ({ route, navigation }) => {
-	const { data } = route.params;
+	const lottoInputed = route.params;
 
 	const goToComp = () => {
 		navigation.navigate('Comp');
@@ -18,13 +18,14 @@ const NumberCheck = ({ route, navigation }) => {
 		<View style={styles.container}>
 			<View style={styles.item1}>
 				<Text>입력하신 번호를 확인해주세요.</Text>
-				<Text>{data.drwNo}</Text>
-				<Text>{data.No1}</Text>
-				<Text>{data.No2}</Text>
-				<Text>{data.No3}</Text>
-				<Text>{data.No4}</Text>
-				<Text>{data.No5}</Text>
-				<Text>{data.No6}</Text>
+				<View>
+					<Text>{lottoInputed[0]}</Text>
+					<Text>{lottoInputed[1]}</Text>
+					<Text>{lottoInputed[2]}</Text>
+					<Text>{lottoInputed[3]}</Text>
+					<Text>{lottoInputed[4]}</Text>
+					<Text>{lottoInputed[5]}</Text>
+				</View>
 			</View>
 			<View style={styles.item2}>
 				<View style={styles.buttonView}>

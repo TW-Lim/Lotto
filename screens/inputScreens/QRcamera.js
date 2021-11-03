@@ -1,12 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-// eslint-disable-next-line react/prop-types
 const QRScanner = ({ navigation }) => {
 	const [hasPermission, setHasPermission] = useState(null);
 	const [scanned, setScanned] = useState(false);
-	const [text, setText] = useState('가운데에 QR코드를 보여주세요');
 
 	useEffect(() => {
 		(async () => {
@@ -16,10 +15,16 @@ const QRScanner = ({ navigation }) => {
 	}, []);
 
 	const handleBarCodeScanned = ({ data }) => {
-		setScanned(true);
-		setText(data);
-		// eslint-disable-next-line react/prop-types
-		navigation.navigate('Check');
+		// QR코드 URL 배열로 만들고 회차 push
+		const countReg = /\d{4}/;
+		const numReg = /\D\d{12}/g;
+		const count = data.match(countReg);
+		const number = data.match(numReg);
+
+		const lottoInputed = count.concat(number);
+
+		console.log(lottoInputed);
+		navigation.navigate('Check', lottoInputed);
 	};
 
 	if (hasPermission === null) {
@@ -40,7 +45,7 @@ const QRScanner = ({ navigation }) => {
 				/>
 			</View>
 			<View style={styles.textbutton}>
-				<Text>{text}</Text>
+				<Text>{'가운데에 QR코드를 보여주세요'}</Text>
 			</View>
 			<View style={{ marginBottom: '5%' }}>
 				{scanned && (
