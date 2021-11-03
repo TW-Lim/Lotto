@@ -1,10 +1,99 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const NumberCheck = ({ route, navigation }) => {
 	const lottoInputed = route.params;
+	const [lottoState, setLottoState] = useState({
+		L1: {
+			drwNo: 0,
+			No1: 0,
+			No2: 0,
+			No3: 0,
+			No4: 0,
+			No5: 0,
+			No6: 0,
+			type: '미',
+		},
+		L2: {
+			drwNo: 0,
+			No1: 0,
+			No2: 0,
+			No3: 0,
+			No4: 0,
+			No5: 0,
+			No6: 0,
+			type: '미',
+		},
+		L3: {
+			drwNo: 0,
+			No1: 0,
+			No2: 0,
+			No3: 0,
+			No4: 0,
+			No5: 0,
+			No6: 0,
+			type: '미',
+		},
+		L4: {
+			drwNo: 0,
+			No1: 0,
+			No2: 0,
+			No3: 0,
+			No4: 0,
+			No5: 0,
+			No6: 0,
+			type: '미',
+		},
+		L5: {
+			drwNo: 0,
+			No1: 0,
+			No2: 0,
+			No3: 0,
+			No4: 0,
+			No5: 0,
+			No6: 0,
+			type: '미',
+		},
+	});
+	const { L1, L2, L3, L4, L5 } = lottoState;
+
+	const lottoInputedRepeat = () => {
+		for (let i = 0; i <= 5; i++) {
+			const lottoArr = lottoInputed[i];
+			const typeReg = /\D/;
+			const numberReg = /\d{2}/g;
+
+			let type = lottoArr.match(typeReg);
+			if (type[0] === 'n') {
+				return false;
+			} else {
+				switch (type) {
+					case 'q':
+						type = '수동';
+						break;
+					//...
+				}
+			}
+			const number = lottoArr.match(numberReg);
+
+			setLottoState({
+				...lottoState,
+				//100% 오류남 문자+숫자=문자로 할 것
+				['L' + (i + 1)]: {
+					drwNo: lottoInputed[0],
+					No1: number[0],
+					No2: number[1],
+					No3: number[2],
+					No4: number[3],
+					No5: number[4],
+					No6: number[5],
+					type: type,
+				},
+			});
+		}
+	};
 
 	const goToComp = () => {
 		navigation.navigate('Comp');
