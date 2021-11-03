@@ -56,7 +56,10 @@ const Keyboard = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<ScrollView style={styles.main}>
+			<ScrollView
+				style={styles.main}
+				contentContainerStyle={{ flexGrow: 1 }}
+			>
 				<Text>1번째</Text>
 				<LottoInput />
 				<Text>2번째</Text>
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	main: {
-		display: '',
+		display: 'flex',
 		flexDirection: 'column',
 		backgroundColor: 'white',
 		width: '90%',
