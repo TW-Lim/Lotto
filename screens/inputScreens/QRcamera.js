@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Camera } from 'expo-camera';
 import { useIsFocused } from '@react-navigation/native';
 
@@ -15,7 +16,7 @@ const QRScanner = ({ navigation }) => {
 	}, []);
 
 	const handleBarCodeScanned = ({ data }) => {
-		// QR코드 URL 배열로 만들고 회차 push
+		// QR코드 URL 배열로 만들고 회차 concat
 		const countReg = /\d{4}/;
 		const numReg = /\D\d{12}/g;
 		const count = data.match(countReg);
@@ -40,6 +41,11 @@ const QRScanner = ({ navigation }) => {
 					<Camera
 						style={styles.camera}
 						onBarCodeScanned={handleBarCodeScanned}
+						barCodeScannerSettings={{
+							barCodeTypes: [
+								BarCodeScanner.Constants.BarCodeType.qr,
+							],
+						}}
 					/>
 				)}
 
