@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Number from '../../../components/Number';
 
 const NumberCheck = ({ route, navigation }) => {
 	const lottoInputed = route.params;
@@ -60,7 +61,8 @@ const NumberCheck = ({ route, navigation }) => {
 	const { L1, L2, L3, L4, L5 } = lottoState;
 
 	const lottoInputedRepeat = () => {
-		for (let i = 0; i <= 5; i++) {
+		let numberl = [];
+		for (let i = 1; i <= 5; i++) {
 			const lottoArr = lottoInputed[i];
 			const typeReg = /\D/;
 			const numberReg = /\d{2}/g;
@@ -69,33 +71,35 @@ const NumberCheck = ({ route, navigation }) => {
 			if (type[0] === 'n') {
 				return false;
 			} else {
-				switch (type) {
+				switch (type[0]) {
 					case 'q':
-						type = '수동';
+						type[0] = '자동';
 						break;
-					//...
+					case 's':
+						type[0] = '반자동';
+						break;
+					case 'm':
+						type[0] = '수동';
+						break;
 				}
 			}
-			const number = lottoArr.match(numberReg);
-
-			setLottoState({
-				...lottoState,
-				//100% 오류남 문자+숫자=문자로 할 것
-				['L' + (i + 1)]: {
-					drwNo: lottoInputed[0],
-					No1: number[0],
-					No2: number[1],
-					No3: number[2],
-					No4: number[3],
-					No5: number[4],
-					No6: number[5],
-					type: type,
-				},
-			});
+			numberl = lottoArr.match(numberReg);
+			numberl.push(type[0]);
+			console.log(numberl);
 		}
+		console.log(numberl);
+		return (
+			<View style={styles.number}>
+				<Number>{numberl[0]}</Number>
+				<Number>{numberl[1]}</Number>
+				<Number>{numberl[2]}</Number>
+				<Number>{numberl[3]}</Number>
+				<Number>{numberl[4]}</Number>
+				<Number>{numberl[5]}</Number>
+				<Text>{numberl[6]}</Text>
+			</View>
+		);
 	};
-
-	console.log(lottoInputed);
 
 	const goToComp = () => {
 		navigation.navigate('Comp');
@@ -109,8 +113,8 @@ const NumberCheck = ({ route, navigation }) => {
 		<View style={styles.container}>
 			<View style={styles.item1}>
 				<Text>입력하신 번호를 확인해주세요.</Text>
+				{lottoInputedRepeat}
 				<View>
-					<Text>{lottoInputed[0]}</Text>
 					<Text>{lottoInputed[1]}</Text>
 					<Text>{lottoInputed[2]}</Text>
 					<Text>{lottoInputed[3]}</Text>
@@ -170,6 +174,26 @@ const styles = StyleSheet.create({
 		/* borderWidth: 1,
 		borderColor: '#c3c3c3',
 		borderRadius: 5, */
+	},
+
+	item3: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		width: '90%',
+		borderWidth: 1,
+		borderColor: 'black',
+		borderRadius: 5,
+	},
+	number: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		flexDirection: 'row',
+		width: '90%',
+		padding: '2%',
+		borderBottomWidth: 1,
+		borderColor: '#c3c3c3',
 	},
 
 	buttonView: {
