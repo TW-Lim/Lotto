@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const NumberCheck = ({ route, navigation }) => {
 	const lottoInputed = route.params;
-	const [lottoState, setLottoState] = useState({
+	/* 	const [lottoState, setLottoState] = useState({
 		L1: {
 			drwNo: 0,
 			No1: 0,
@@ -94,6 +94,9 @@ const NumberCheck = ({ route, navigation }) => {
 			});
 		}
 	};
+ */
+
+	lottoInputed;
 
 	const goToComp = () => {
 		navigation.navigate('Comp');
